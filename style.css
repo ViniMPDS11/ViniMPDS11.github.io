@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -22,6 +23,33 @@ body {
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE 10+ */
     user-select: none; /* padrão */
+}
+
+/* Botão que volta para o topo */
+#back-to-top {
+    display: flex;
+    position: fixed;
+    bottom: -45px; /* Hidden initially */
+    right: 20px;
+    background-color: #000;
+    border: 1px solid #ffffff27;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    z-index: 1000;
+    transition: background-color 0.2s ease-in-out, bottom 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    opacity: 0;
+}
+
+#back-to-top img {
+    height: 100%;
+    width: 100%;
+}
+
+#back-to-top:hover {
+    background-color: #090909;
 }
 
 /* Fontes */
@@ -98,8 +126,9 @@ body {
 
 .image-gallery {
     display: grid;
+    justify-content: center;
     gap: 8px;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 49% 49%;
 }
 
 .gallery-img {
@@ -249,6 +278,11 @@ body {
 
 /* Para telas menores que 600px */
 @media (max-width: 600px) {
+
+    #back-to-top {
+        width: 60px;
+        height: 60px;
+    }
 
     .cover-photo {
         height: 200px;

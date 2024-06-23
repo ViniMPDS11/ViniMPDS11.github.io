@@ -1,3 +1,24 @@
+// Funções para levar usuário de volta ao topo da página
+function toggleBackToTopButton() {
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    if (document.body.scrollTop > window.innerHeight || document.documentElement.scrollTop > window.innerHeight) {
+        backToTopButton.style.opacity = "1"
+        backToTopButton.style.bottom = "20px";
+    } else {
+        backToTopButton.style.opacity = "0";
+        backToTopButton.style.bottom = "-45px";
+    }
+}
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });    
+}
+
+// Função que aguarda o carregamento do HTML sem aguardar pelo carregamento completo das folhas de estilo, imagens e subframes
 document.addEventListener('DOMContentLoaded', function() {
     const galleryImgs = document.querySelectorAll('.gallery-img');
     const modal = document.getElementById('modal');
@@ -81,4 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nextArrow.style.display = 'block'; // Mostrar seta direita quando não no final
         }
     }
+    window.onscroll = function() {
+        toggleBackToTopButton();
+    };
 });
